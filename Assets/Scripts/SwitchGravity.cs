@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SwitchGravity : MonoBehaviour
 {
-    private Transform player;
     [SerializeField] private Camera camera;
     public int counterj = 0;
     public int counterk = 0;
@@ -14,7 +13,7 @@ public class SwitchGravity : MonoBehaviour
 
     void Start()
     {
-        player = GetComponent<Transform>();
+        
     }
 
     void Update()
@@ -55,6 +54,7 @@ public class SwitchGravity : MonoBehaviour
                 counterj++;
                 counterk = 3;
                 lado = 3;
+
             }
             else if (counterj == 1)
             {
