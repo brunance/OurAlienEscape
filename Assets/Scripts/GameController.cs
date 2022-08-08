@@ -24,15 +24,6 @@ public class GameController : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene("leveltest");
+        Physics2D.gravity = new Vector2(0, -9.81f);
     }
-
-    //public void GameOver()
-    //{
-    //    gameOver.SetActive(true);
-    //}
-
-    //public void RestartGame(string level)
-    //{
-    //    SceneManager.LoadScene(level);
-    //}
 }
