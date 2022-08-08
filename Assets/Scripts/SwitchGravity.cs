@@ -10,6 +10,7 @@ public class SwitchGravity : MonoBehaviour
     int lado = 0;
     float angulo = 0;
     bool canTurn = true;
+    public static GameController instance;
 
     void Start()
     {

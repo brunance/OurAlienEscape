@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
-    [SerializeField] GameObject gameOver;
+    public GameObject gameOver;
 
     // Start is called before the first frame update
     void Start()
@@ -16,13 +16,23 @@ public class GameController : MonoBehaviour
         instance = this;
     }
 
-    public void GameOver()
+    public void ShowGameOver()
     {
         gameOver.SetActive(true);
     }
 
-    public void RestartGame(string level)
+    public void RestartGame()
     {
-        SceneManager.LoadScene(level);
+        SceneManager.LoadScene("leveltest");
     }
+
+    //public void GameOver()
+    //{
+    //    gameOver.SetActive(true);
+    //}
+
+    //public void RestartGame(string level)
+    //{
+    //    SceneManager.LoadScene(level);
+    //}
 }
