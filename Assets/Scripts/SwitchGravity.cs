@@ -11,10 +11,11 @@ public class SwitchGravity : MonoBehaviour
     float angulo = 0;
     bool canTurn = true;
     public static GameController instance;
+    public Player player;
 
     void Start()
     {
-        
+        player = FindObjectOfType<Player>();
     }
 
     void Update()
@@ -38,6 +39,7 @@ public class SwitchGravity : MonoBehaviour
         }
 
         camera.transform.rotation = Quaternion.Slerp(camera.transform.rotation, Quaternion.Euler(0, 0, angulo), Time.deltaTime * 4);
+
     }
     void SpriteRotation()
     {
@@ -45,6 +47,7 @@ public class SwitchGravity : MonoBehaviour
         {
             return;
         }
+
         if (Input.GetKeyDown(KeyCode.J))
         {
             StartCoroutine("waitTime");
@@ -84,7 +87,6 @@ public class SwitchGravity : MonoBehaviour
         {
             StartCoroutine("waitTime");
             transform.eulerAngles += new Vector3(0f, 0f, 90f);
-            //camera.transform.eulerAngles += new Vector3(0f, 0f, 90f);
             if (counterk == 0)
             {
                 Physics2D.gravity = new Vector2(9.81f, 0); //direita
@@ -114,12 +116,14 @@ public class SwitchGravity : MonoBehaviour
                 lado = 0;
             }
         }
-
     }
+
     IEnumerator waitTime()
     {
         canTurn = false;
-        yield return new WaitForSeconds (1.5f);
+        player.speed = 0f;
+        yield return new WaitForSeconds (1f);
         canTurn = true;
+        player.speed = 3.5f;
     }
 }

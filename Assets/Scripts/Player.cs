@@ -5,12 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float speed;
-
     private Animator anim;
+    public Rigidbody2D box;
 
     void Start()
     {
         anim = GetComponent<Animator>();
+        box = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -94,6 +95,16 @@ public class Player : MonoBehaviour
         {
             GameController.instance.ShowGameOver();
             Destroy(gameObject);
+        }
+
+        if (collision.gameObject.tag == "Box")
+        {
+            Debug.Log(box.velocity);
+            if (box.velocity.x > 0.25 || box.velocity.y > 0.25 || box.velocity.x < -0.25 || box.velocity.y < -0.25)
+            {
+                GameController.instance.ShowGameOver();
+                Destroy(gameObject);
+            }
         }
     }
 
