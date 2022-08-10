@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (collision.gameObject.tag == "Box")
+        if (collision.gameObject.tag == "Box" )
         {
             Debug.Log(box.velocity);
             if (box.velocity.x > 0.25 || box.velocity.y > 0.25 || box.velocity.x < -0.25 || box.velocity.y < -0.25)
@@ -107,5 +107,4 @@ public class Player : MonoBehaviour
             }
         }
     }
-
 }
