@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("leveltest");
+        SceneManager.LoadScene("DefinitiveLevel");
         Physics2D.gravity = new Vector2(0, -9.81f);
     }
 }
