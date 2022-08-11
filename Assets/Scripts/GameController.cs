@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     public static GameController instance;
 
     public GameObject gameOver;
+    public GameObject winnerScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,11 @@ public class GameController : MonoBehaviour
     public void ShowGameOver()
     {
         gameOver.SetActive(true);
+    }
+
+    public void ShowWinnerScreen()
+    {
+        winnerScreen.SetActive(true);
     }
 
     public void RestartGame()

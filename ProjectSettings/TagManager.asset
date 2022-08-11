@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Spike
   - Box
+  - Door
   layers:
   - Default
   - TransparentFX

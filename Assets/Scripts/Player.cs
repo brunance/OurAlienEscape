@@ -7,11 +7,13 @@ public class Player : MonoBehaviour
     public float speed;
     private Animator anim;
     public Rigidbody2D box;
+    public Key key;
 
     void Start()
     {
         anim = GetComponent<Animator>();
         box = GetComponent<Rigidbody2D>();
+        key = FindObjectOfType<Key>();
     }
 
     void Update()
@@ -105,6 +107,15 @@ public class Player : MonoBehaviour
                 GameController.instance.ShowGameOver();
                 Destroy(gameObject);
             }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (key.caught == true && collision.gameObject.tag == "Door")
+        {
+            GameController.instance.ShowWinnerScreen();
+            Destroy(gameObject);
         }
     }
 }
