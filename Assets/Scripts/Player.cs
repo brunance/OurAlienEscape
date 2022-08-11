@@ -5,12 +5,15 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float speed;
-
     private Animator anim;
+    public Rigidbody2D box;
+    public Key key;
 
     void Start()
     {
         anim = GetComponent<Animator>();
+        box = GetComponent<Rigidbody2D>();
+        key = FindObjectOfType<Key>();
     }
 
     void Update()
@@ -88,4 +91,31 @@ public class Player : MonoBehaviour
 
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Spike")
+        {
+            GameController.instance.ShowGameOver();
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.tag == "Box")
+        {
+            Debug.Log(box.velocity);
+            if (box.velocity.x > 0.25 || box.velocity.y > 0.25 || box.velocity.x < -0.25 || box.velocity.y < -0.25)
+            {
+                GameController.instance.ShowGameOver();
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (key.caught == true && collision.gameObject.tag == "Door")
+        {
+            GameController.instance.ShowWinnerScreen();
+            Destroy(gameObject);
+        }
+    }
 }
